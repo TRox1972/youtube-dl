@@ -376,6 +376,7 @@ from .leeco import (
     LePlaylistIE,
     LetvCloudIE,
 )
+from .libraryofcongress import LibraryOfCongressIE
 from .libsyn import LibsynIE
 from .lifenews import (
     LifeNewsIE,
@@ -394,6 +395,7 @@ from .livestream import (
     LivestreamShortenerIE,
 )
 from .lnkgo import LnkGoIE
+from .loc import LibraryOfCongressIE
 from .lovehomeporn import LoveHomePornIE
 from .lrt import LRTIE
 from .lynda import (
