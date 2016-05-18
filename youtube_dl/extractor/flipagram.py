@@ -4,6 +4,14 @@ from __future__ import unicode_literals
 import re
 from collections import defaultdict
 from .common import InfoExtractor
+
+# getting error
+    # /usr/local/opt/python3/bin/python3.5:
+    # Error while finding spec for
+    # 'youtube_dl.__main__' (<class 'ImportError'>:
+    # cannot import name 'parse_iso8301'); 'youtube_dl'
+    # is a package and cannot be directly executed
+# when importing
 #from ..utils import parse_iso8301, unified_strdate
 
 
@@ -30,26 +38,20 @@ class FlipagramIE(InfoExtractor):
 
         comments = []
         i = 0
-        '''
         for comment in user_data.get('comments').get(video_id).get('items'):
-            print(len(user_data.get('comments').get(video_id).get('items')))
-            print(user_data.get('comments').get(video_id).get('items')[1].get('user').get('name'))
             comments.append(
                     {
-                        'author': comment[i].get('user').get('name'),
-                        'author_id': comment[i].get('user').get('username'),
-                        'id': comment[i].get('id'),
-                        'text': comment[i].get('comment')[0],
-                            # list seem always to only contain one entry
+                        'author': comment.get('user').get('name'),
+                        'author_id': comment.get('user').get('username'),
+                        'id': comment.get('id'),
+                        'text': comment.get('comment')[0],
                         #'timestamp': convert_to_iso(parse_iso8301(comment[i].get('created'))),
-                        'timestamp': '',
-                        'parent': 'root'  # reply system works by @mention
+                        'parent': 'root'
                     }
                 )
-        '''
 
         tags = []
-        i = 1  # first entry is description
+        i = 1
         for tag in user_data.get('flipagram').get('story'):
             if type(tag) == type({}):
                 try:
@@ -58,10 +60,8 @@ class FlipagramIE(InfoExtractor):
                     # Python 3.x
                     tags.append(next(iter(tag.values())))
 
-        # get the audio track
         audio_url = user_data.get('flipagram').get('music').get('track').get('previewUrl')
 
-        # how do we merge the audio and the video file?
         formats = [
             {
                 'url': audio_url,
@@ -95,7 +95,6 @@ class FlipagramIE(InfoExtractor):
             'comments': comments,
             'tags': tags,
             'is_live': False,
-            # technically not a track, but the track is an important part
             'track': user_data.get('flipagram').get('music').get('track').get('title'),
             'track_id': user_data.get('flipagram').get('music').get('track').get('id'),
             'artist': user_data.get('flipagram').get('music').get('track').get('artistName'),
