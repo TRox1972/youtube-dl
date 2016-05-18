@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 import re
-import json
 from collections import defaultdict
 from .common import InfoExtractor
 #from ..utils import parse_iso8301, unified_strdate
