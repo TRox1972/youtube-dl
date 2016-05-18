@@ -18,11 +18,8 @@ class FlipagramIE(InfoExtractor):
         webpage = self._download_webpage(url, video_id)
 
         self.report_extraction(video_id)
-        #content_data = self._parse_json(re.search(r'..@context.+', webpage).group(0), video_id)
-        #user_data = self._parse_json(re.search(r'window.reactH2O\s*=\s*({.+});', webpage).group(1), video_id)
-
-        content_data = json.loads(re.search(r'..@context.+', webpage).group(0))
-        user_data = json.loads(re.search(r'window.reactH2O\s*=\s*({.+});', webpage).group(1))
+        content_data = self._parse_json(re.search(r'..@context.+', webpage).group(0), video_id)
+        user_data = self._parse_json(re.search(r'window.reactH2O\s*=\s*({.+});', webpage).group(1), video_id)
 
         thumbnails = [{}, {}, {}] # default # of thumbnail formats
         i = 0
