@@ -59,7 +59,6 @@ class FlipagramIE(InfoExtractor):
                     tags.append(next(iter(tag.values())))
 
         # get the audio track
-        #audio_url = content_data.get('flipagram').get('music').get('track').get('previewUrl')
         audio_url = user_data.get('flipagram').get('music').get('track').get('previewUrl')
 
         # how do we merge the audio and the video file?
