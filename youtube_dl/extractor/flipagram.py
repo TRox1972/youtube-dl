@@ -28,7 +28,7 @@ class FlipagramIE(InfoExtractor):
         content_data = self._parse_json(re.search(r'..@context.+', webpage).group(0), video_id)
         user_data = self._parse_json(re.search(r'window.reactH2O\s*=\s*({.+});', webpage).group(1), video_id)
 
-        thumbnails = [{}, {}, {}] # default # of thumbnail formats
+        thumbnails = [{}, {}, {}]
         i = 0
         for cover in user_data.get('flipagram').get('covers'):
             thumbnails[i]['url'] = 'http:' + cover.get('url')
