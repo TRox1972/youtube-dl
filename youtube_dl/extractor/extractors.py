@@ -5,7 +5,7 @@ from .abc import ABCIE
 from .abc7news import Abc7NewsIE
 from .abcnews import (
     AbcNewsIE,
-    AbcNewsVideoIE,
+    AbcNewsVideoIE,f
 )
 from .academicearth import AcademicEarthCourseIE
 from .acast import (
@@ -240,6 +240,7 @@ from .fivemin import FiveMinIE
 from .fivetv import FiveTVIE
 from .fktv import FKTVIE
 from .flickr import FlickrIE
+from .flippagram import FlippagramIE
 from .folketinget import FolketingetIE
 from .footyroom import FootyRoomIE
 from .fourtube import FourTubeIE
