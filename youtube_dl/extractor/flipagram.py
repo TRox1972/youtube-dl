@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import re
+import json
 from collections import defaultdict
 from .common import InfoExtractor
 #from ..utils import parse_iso8301, unified_strdate
@@ -58,10 +59,29 @@ class FlipagramIE(InfoExtractor):
                     # Python 3.x
                     tags.append(next(iter(tag.values())))
 
+        # get the audio track
+        #audio_url = content_data.get('flipagram').get('music').get('track').get('previewUrl')
+        audio_url = user_data.get('flipagram').get('music').get('track').get('previewUrl')
+
+        # how do we merge the audio and the video file?
+        formats = [
+            {
+                'url': audio_url,
+                'ext': 'm4a',
+                'format_note': '(audio only)',
+            },
+            {
+                'url': content_data.get('contentUrl'),
+                'ext': 'mp4',
+                'width': user_data.get('flipagram').get('video').get('width'),
+                'height': user_data.get('flipagram').get('video').get('height'),
+            }
+        ]
+
         return {
             'id': video_id,
             'title': content_data.get('name'),
-            'url': content_data.get('contentUrl'),
+            'formats': formats,
             'ext': 'mp4',
             'thumbnails': thumbnails,
             'description': content_data.get('description'),
