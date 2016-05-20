@@ -717,6 +717,7 @@ from .sportbox import (
     SportBoxEmbedIE,
 )
 from .sportdeutschland import SportDeutschlandIE
+from .spoilertv import SpoilerTVIE
 from .srgssr import (
     SRGSSRIE,
     SRGSSRPlayIE,
