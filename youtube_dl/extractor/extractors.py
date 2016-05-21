@@ -772,6 +772,7 @@ from .theplatform import (
 from .thescene import TheSceneIE
 from .thesixtyone import TheSixtyOneIE
 from .thestar import TheStarIE
+from .thevideome import TheVideoMeIE
 from .thisamericanlife import ThisAmericanLifeIE
 from .thisav import ThisAVIE
 from .threeqsdn import ThreeQSDNIE
