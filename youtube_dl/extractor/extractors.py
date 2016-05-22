@@ -677,6 +677,7 @@ from .sexu import SexuIE
 from .shahid import ShahidIE
 from .shared import SharedIE
 from .sharesix import ShareSixIE
+from .sibnet import SibnetIE
 from .sina import SinaIE
 from .skynewsarabia import (
     SkyNewsArabiaIE,
