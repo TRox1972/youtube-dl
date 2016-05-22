@@ -310,6 +310,7 @@ from .hotnewhiphop import HotNewHipHopIE
 from .hotstar import HotStarIE
 from .howcast import HowcastIE
 from .howstuffworks import HowStuffWorksIE
+from .hudl import HudlIE
 from .huffpost import HuffPostIE
 from .hypem import HypemIE
 from .iconosquare import IconosquareIE
